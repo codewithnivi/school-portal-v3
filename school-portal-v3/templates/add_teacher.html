@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Add Teacher</h3>
+<form method="POST" class="card p-4" style="max-width: 400px;">
+    <div class="mb-3"><label class="form-label">Name</label><input name="name" class="form-control" required></div>
+    <div class="mb-3"><label class="form-label">Subject</label><input name="subject" class="form-control" required></div>
+    <div class="mb-3"><label class="form-label">Email (used to log in)</label><input type="email" name="email" class="form-control" required></div>
+    <div class="mb-3"><label class="form-label">Login Password</label><input name="password" class="form-control" placeholder="Leave blank for default: teacher123"></div>
+    <button class="btn btn-primary w-100">Save</button>
+    <a href="/admin/teachers" class="btn btn-link w-100 mt-1">Cancel</a>
+</form>
+{% endblock %}

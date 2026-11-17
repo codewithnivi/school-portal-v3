@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Teachers <span class="text-muted" style="font-size:16px;">({{ teachers|length }} total)</span></h3>
+    <a href="/admin/teachers/add" class="btn btn-primary">+ Add Teacher</a>
+</div>
+<table class="table table-bordered bg-white">
+    <thead>
+        <tr><th>Name</th><th>Subject</th><th>Email</th><th>Actions</th></tr>
+    </thead>
+    <tbody>
+        {% for t in teachers %}
+        <tr>
+            <td>{{ t['name'] }}</td>
+            <td>{{ t['subject'] }}</td>
+            <td>{{ t['email'] }}</td>
+            <td>
+                <a href="/admin/teachers/edit/{{ t['id'] }}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="/admin/teachers/delete/{{ t['id'] }}" class="btn btn-sm btn-danger" onclick="return confirm('Delete this teacher?')">Delete</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="4" class="text-center text-muted">No teachers yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

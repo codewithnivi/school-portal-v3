@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>My Assignments / Homework</h3>
+{% for a in records %}
+<div class="assignment-card">
+    <div class="d-flex justify-content-between">
+        <strong>{{ a['title'] }}</strong>
+        <span class="badge-class">{{ a['subject'] }}</span>
+    </div>
+    <p class="mb-1 mt-1">{{ a['description'] }}</p>
+    <small class="text-muted">Due {{ a['due_date'] }} · Posted by {{ a['posted_by'] }}</small>
+</div>
+{% else %}
+<p class="text-muted">No assignments yet.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>My Attendance</h3>
+<table class="table table-bordered bg-white mt-3">
+    <thead><tr><th>Date</th><th>Status</th></tr></thead>
+    <tbody>
+        {% for r in records %}
+        <tr>
+            <td>{{ r['date'] }}</td>
+            <td>
+                {% if r['status'] == 'Present' %}
+                <span class="badge-present">Present</span>
+                {% else %}
+                <span class="badge-absent">Absent</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="2" class="text-center text-muted">No attendance records yet.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>My Dashboard</h2>
+<p class="text-muted">Class {{ me['class_name'] }} · Roll No {{ me['roll_no'] }}</p>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card stat-card p-3">
+            <h6 class="text-muted">My Attendance</h6>
+            <h2 style="color:#0d9488;">{{ percent }}%</h2>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card p-3">
+            <h6 class="text-muted">My Assignments</h6>
+            <h2 style="color:#0369a1;">{{ assignment_count }}</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

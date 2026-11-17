@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Edit Student</h3>
+<form method="POST" class="card p-4" style="max-width: 400px;">
+    <div class="mb-3"><label class="form-label">Name</label><input name="name" class="form-control" value="{{ student['name'] }}" required></div>
+    <div class="mb-3"><label class="form-label">Roll No</label><input name="roll_no" class="form-control" value="{{ student['roll_no'] }}" required></div>
+    <div class="mb-3"><label class="form-label">Class</label><input name="class_name" class="form-control" value="{{ student['class_name'] }}" required></div>
+    <div class="mb-3"><label class="form-label">Email</label><input type="email" name="email" class="form-control" value="{{ student['email'] }}" required></div>
+    <button class="btn btn-primary w-100">Update</button>
+    <a href="/admin/students" class="btn btn-link w-100 mt-1">Cancel</a>
+</form>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Assignments / Homework</h3>
+
+<form method="POST" class="card p-3 mb-4">
+    <div class="row">
+        <div class="col-md-2 mb-2">
+            <label class="form-label">Class</label>
+            <select name="class_name" class="form-select" required>
+                {% for c in classes %}<option value="{{ c }}">{{ c }}</option>{% endfor %}
+            </select>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label class="form-label">Subject</label>
+            <input name="subject" class="form-control" required>
+        </div>
+        <div class="col-md-3 mb-2">
+            <label class="form-label">Title</label>
+            <input name="title" class="form-control" required>
+        </div>
+        <div class="col-md-3 mb-2">
+            <label class="form-label">Description</label>
+            <input name="description" class="form-control" required>
+        </div>
+        <div class="col-md-2 mb-2">
+            <label class="form-label">Due Date</label>
+            <input type="date" name="due_date" class="form-control" required>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-2">+ Post Assignment</button>
+</form>
+
+{% for a in assignments %}
+<div class="assignment-card">
+    <div class="d-flex justify-content-between">
+        <strong>{{ a['title'] }}</strong>
+        <span class="badge-class">{{ a['class_name'] }} · {{ a['subject'] }}</span>
+    </div>
+    <p class="mb-1 mt-1">{{ a['description'] }}</p>
+    <small class="text-muted">Due {{ a['due_date'] }} · Posted by {{ a['posted_by'] }}</small>
+    <a href="/teacher/assignments/delete/{{ a['id'] }}" class="btn btn-sm btn-danger float-end" onclick="return confirm('Delete this assignment?')">Delete</a>
+</div>
+{% else %}
+<p class="text-muted">No assignments posted yet.</p>
+{% endfor %}
+{% endblock %}
